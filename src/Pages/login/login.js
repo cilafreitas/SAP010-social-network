@@ -1,10 +1,13 @@
-import './login.css';
 
-<section>
-    <section>
-        <form>
-            <h1>Bem Social</h1>
-        </form>
-    </section>
-</section>
 
+<header>
+
+</header>
+
+<main>
+
+</main>
+
+<footer>
+   <p>Desenvolvido por Priscila Freitas</p>
+</footer>
