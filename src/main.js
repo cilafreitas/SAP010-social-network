@@ -1,4 +1,8 @@
 // Este es el punto de entrada de tu aplicacion
+window.addEventListener("load",)
+
+
+
 
 import { myFunction } from "./lib/index.js";
 // Import the functions you need from the SDKs you need
