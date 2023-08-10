@@ -1,27 +1,28 @@
+
+
 export default () => {
   const containerLogin = document.createElement('div');
+  
+  
   const templateLogin = `
   
 <header>
-  <img src="${}" alt="Logo-Coracao"
-  <img src="${}" alt="Logo-Bem-Social"
+  <img src=${coracao} alt="Logo-Coracao"
+  <img src=${BemSocial} alt="Logo-Bem-Social"
 </header>
 
 
 <main>
 
-  <div class= containerLogin>
-      <input type = "text"  id = "login" name="login" placeholder = "Login" requered>
-      <label for="login" >Login</label>
-
-      <input type = "password"  id = "senha-login" name="senha" placeholder = "Senha" requered>
-      <label for="senha" >Senha</label>
-
-      <a href = "/#feed"><button type="submit">Entrar</button></a>
-
-      <p>Não está cadastrado? <a href= "/#cadastro-clique-aqui" id="clique-aqui">Clique aqui!</a></p>
-
+  <div class= "formulario-login">
+      <h2>Login</h2>
+      <p>E-mail:</p>
+      <input type="email"/>
+      <p>Senha:</p>
+      <input type="password"/>
+      <button type="button">ENTRAR</button>
   </div>
+
 </main>
 
 
