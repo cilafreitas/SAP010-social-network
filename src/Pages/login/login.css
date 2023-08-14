@@ -1,9 +1,11 @@
-body{
-    margin: 0;
-    padding: 0;
-    background-color: blue;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: blue;
 }
 
-.formulario-login{
-    
+.formulario-login {
+  background-color: #82e1f5;
+  width: 265px;
+  height: 277px;
 }

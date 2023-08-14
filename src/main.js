@@ -1,25 +1,34 @@
 // Este es el punto de entrada de tu aplicacion
-window.addEventListener("load",)
+import home from "./pages/login/login.js";
+import feed from "./Pages/feed/feed.js"
 
+const main = document.querySelector('#root');
 
-
-
-import { myFunction } from "./lib/index.js";
-// Import the functions you need from the SDKs you need
-
-const email = "teste@gmail.com";
-const password = "123456";
-
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
+const init = () => {
+  window.addEventListener("hashchange", () => {
+    main.innerHTML = "";
+    console.log(window.location.hash)
+    switch (window.location.hash) {
+      case " ":
+        main.appendChild(home());
+        break;
+      case "feed":
+        main.appendChild(feed());
+        break;
+      default:
+        main.appendChild(home());
+    };
   })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
 
-myFunction();
+}
+
+window.addEventListener("load", () => {
+  main.appendChild(home());
+  init();
+})
+
+
+
+
+
+

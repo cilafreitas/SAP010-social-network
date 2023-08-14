@@ -1,9 +1,7 @@
-
-
 export default () => {
   const containerLogin = document.createElement('div');
-  
-  
+
+
   const templateLogin = `
   
 <header>
@@ -24,8 +22,6 @@ export default () => {
   </div>
 
 </main>
-
-
 `;
 
   containerLogin.innerHTML = templateLogin;
