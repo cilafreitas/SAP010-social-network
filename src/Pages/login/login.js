@@ -1,24 +1,29 @@
-export default (coracaoUrl, bemSocialUrl) => {
+import coracaoUrl from "../../img/logo-coracao.png";
+import bemSocialUrl from "../../img/logo-bem-social.png";
+
+export default () => {
   const containerLogin = document.createElement('div');
 
 
   const templateLogin = `
   
 <header>
-  <img src=${coracaoUrl} alt="Logo-Coracao"
-  <img src=${bemSocialUrl} alt="Logo-Bem-Social"
+  <img src=${coracaoUrl} alt="Logo-Coracao">
+  <img src=${bemSocialUrl} alt="Logo-Bem-Social">
 </header>
 
 
 <main>
 
   <div class= "formulario-login">
-      <h2>Login</h2>
       <p>E-mail:</p>
       <input type="email"/>
       <p>Senha:</p>
       <input type="password"/>
-      <button type="button">ENTRAR</button>
+      <button type="button">ENTRAR</button> 
+      <input type="password"/>
+      <button type="button">REGISTRAR</button>
+      <input type="password"/>
   </div>
 
 </main>
