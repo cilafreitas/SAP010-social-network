@@ -1,12 +1,12 @@
-export default () => {
+export default (coracaoUrl, bemSocialUrl) => {
   const containerLogin = document.createElement('div');
 
 
   const templateLogin = `
   
 <header>
-  <img src=${coracao} alt="Logo-Coracao"
-  <img src=${BemSocial} alt="Logo-Bem-Social"
+  <img src=${coracaoUrl} alt="Logo-Coracao"
+  <img src=${bemSocialUrl} alt="Logo-Bem-Social"
 </header>
 
 
