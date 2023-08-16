@@ -6,31 +6,27 @@ export default () => {
 
 
   const templateLogin = `
-  
-<header>
-  <img src=${coracaoUrl} alt="Logo-Coracao">
-  <img src=${bemSocialUrl} alt="Logo-Bem-Social">
-</header>
+  <header>
+    <div class="logo-imagem">
+      <img src=${coracaoUrl} alt="Logo-Coracao">
+      <img src=${bemSocialUrl} alt="Logo-Bem-Social">
+  </header>
 
 
-<main>
-
-  <div class= "formulario-login">
+  <main>
+    <div class= "formulario-login">
       <p>E-mail:</p>
       <input type="email"/>
       <p>Senha:</p>
       <input type="password"/>
-      <button type="button">ENTRAR</button> 
-      <input type="password"/>
-      <button type="button">REGISTRAR</button>
-      <input type="password"/>
-  </div>
-
-</main>
+      <button class="botao-entrar" type="button">ENTRAR</button> 
+      <button class="botao-registrar" type="button">REGISTRAR</button>
+    </div>
+  </main>
 `;
 
   containerLogin.innerHTML = templateLogin;
   return containerLogin
 
-}
+};
 
