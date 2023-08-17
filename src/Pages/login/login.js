@@ -6,26 +6,36 @@ export default () => {
 
 
   const templateLogin = `
-  <header>
-    <div class="logo-imagem">
+  
+  <main>
+    <div class= "formulario-login"> 
+      <div class="logo-imagem">
       <img src=${coracaoUrl} alt="Logo-Coracao">
       <img src=${bemSocialUrl} alt="Logo-Bem-Social">
-  </header>
-
-
-  <main>
-    <div class= "formulario-login">
+    </div>
       <p>E-mail:</p>
-      <input type="email"/>
+      <input id="input-email" type="email"/>
       <p>Senha:</p>
       <input type="password"/>
-      <button class="botao-entrar" type="button">ENTRAR</button> 
-      <button class="botao-registrar" type="button">REGISTRAR</button>
+      <button id="botao-entrar" type="button">ENTRAR</button> 
+      <button id="botao-registrar" type="button">REGISTRAR</button>
     </div>
   </main>
 `;
 
   containerLogin.innerHTML = templateLogin;
+
+  const botaoEntrar = containerLogin.querySelector('#botao-entrar');
+
+  botaoEntrar.addEventListener('click', () => {
+    console.log('chamei botão');
+    //obter referencia aos inputs
+    const inputEmail = containerLogin.querySelector('#input-email');
+    //obter e-mail e senha dos inputs
+    console.log(inputEmail.value)
+    //chamar uma função com os parâmetros e-mail e senha
+  });
+
   return containerLogin
 
 };

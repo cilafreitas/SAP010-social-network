@@ -1,11 +1,10 @@
-import { myFunction } from "./lib/index.js";
-// Import the functions you need from the SDKs you need
 
 // TODO: Add SDKs for Firebase products that you want to use
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-const email = "teste@gmail.com";
-const password = "123456";
+//const email = "teste@gmail.com";
+//const password = "123456";
+export 
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
@@ -18,4 +17,4 @@ createUserWithEmailAndPassword(auth, email, password)
     // ..
   });
 
-myFunction();
+
