@@ -6,7 +6,6 @@ export default () => {
 
 
   const templateLogin = `
-  
   <main>
     <div class= "formulario-login"> 
       <div class="logo-imagem">
@@ -16,7 +15,7 @@ export default () => {
       <p>E-mail:</p>
       <input id="input-email" type="email"/>
       <p>Senha:</p>
-      <input type="password"/>
+      <input id="input-senha" type="password"/>
       <button id="botao-entrar" type="button">ENTRAR</button> 
       <button id="botao-registrar" type="button">REGISTRAR</button>
     </div>
@@ -26,17 +25,25 @@ export default () => {
   containerLogin.innerHTML = templateLogin;
 
   const botaoEntrar = containerLogin.querySelector('#botao-entrar');
-
   botaoEntrar.addEventListener('click', () => {
     console.log('chamei botão');
     //obter referencia aos inputs
     const inputEmail = containerLogin.querySelector('#input-email');
-    //obter e-mail e senha dos inputs
     console.log(inputEmail.value)
-    //chamar uma função com os parâmetros e-mail e senha
+    //criar input senha
+    const inputSenha = containerLogin.querySelector('#input-senha');
+    console.log(inputSenha.value)
+    //chamar uma função do firebase com os parâmetros e-mail e senha
+    
+  });
+  // criar um evento para redirecionar para a página de registro
+  //botaoRegistrar 
+  const botaoRegistrar = containerLogin.querySelector('#botao-registrar');
+  botaoRegistrar.addEventListener('click', () => {
+    console.log('chamei botão');
   });
 
-  return containerLogin
+    return containerLogin
 
-};
+  };
 
