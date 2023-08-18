@@ -3,10 +3,10 @@ import bemSocialUrl from "../../img/logo-bem-social.png";
 import { registrarUsuario } from "../../firebase/firebase";
 
 export default () => {
-    const containerRegistro = document.createElement('div');
+  const containerRegistro = document.createElement('div');
 
 
-    const templateRegistro = `
+  const templateRegistro = `
 
   <main>
     <div class= "formulario-registro"> 
@@ -15,33 +15,34 @@ export default () => {
       <img src=${bemSocialUrl} alt="Logo-Bem-Social">
     </div>
       <h2>Cadastro de Usuário</h2>  
-      <p>Nome:</p>
-      <input id="input-nome" type="name"/>
       <p>E-mail:</p>
       <input id="input-email" type="email"/>
       <p>Senha:</p>
-      <input type="password"/>
+      <input id="input-senha" type="password"/>
       <button id="botao-registrar" type="button">REGISTRAR</button>
     </div>
   </main>
 `;
 
-    containerRegistro.innerHTML = templateRegistro;
+  containerRegistro.innerHTML = templateRegistro;
 
-    const botaoRegistrar = containerRegistro.querySelector('#botao-registrar');
+  const botaoRegistrar = containerRegistro.querySelector('#botao-registrar');
 
-    botaoRegistrar.addEventListener('click', () => {
-        console.log('chamei botão');
-        //obter referencia aos inputs
-        const inputNome = containerRegistro.querySelector('#input-nome');
-        const inputEmail = containerRegistro.querySelector('#input-email');
-        //obter e-mail e senha dos inputs
-        console.log(inputEmail.value)
-        //chamar uma função com os parâmetros e-mail e senha
-        registrarUsuario(inputNome.value, inputEmail.value);
-    });
+  botaoRegistrar.addEventListener('click', () => {
+    console.log('chamei botão');
+    //obter referencia aos inputs
+    const inputEmail = containerRegistro.querySelector('#input-email');
+    //obter e-mail e senha dos inputs
+    console.log(inputEmail.value)
+    //chamar uma função com os parâmetros e-mail e senha
+    const inputSenha = containerRegistro.querySelector('#input-senha');
 
-    return containerRegistro
+    registrarUsuario(inputEmail.value, inputSenha.value);
+
+
+  });
+
+  return containerRegistro
 
 };
 
