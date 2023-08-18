@@ -1,9 +1,8 @@
-import coracaoUrl from "../../img/logo-coracao.png";
-import bemSocialUrl from "../../img/logo-bem-social.png";
+import coracaoUrl from '../../img/logo-coracao.png';
+import bemSocialUrl from '../../img/logo-bem-social.png';
 
 export default () => {
   const containerLogin = document.createElement('div');
-
 
   const templateLogin = `
   <main>
@@ -29,22 +28,19 @@ export default () => {
     console.log('chamei botão');
     //obter referencia aos inputs
     const inputEmail = containerLogin.querySelector('#input-email');
-    console.log(inputEmail.value)
+    console.log(inputEmail.value);
     //criar input senha
     const inputSenha = containerLogin.querySelector('#input-senha');
-    console.log(inputSenha.value)
+    console.log(inputSenha.value);
     //chamar uma função do firebase com os parâmetros e-mail e senha
-    
+
   });
   // criar um evento para redirecionar para a página de registro
   //botaoRegistrar 
   const botaoRegistrar = containerLogin.querySelector('#botao-registrar');
   botaoRegistrar.addEventListener('click', () => {
     console.log('chamei botão');
-    window.location.hash='registro' 
+    window.location.hash = 'registro';
   });
-
-    return containerLogin
-
-  };
-
+  return containerLogin;
+};

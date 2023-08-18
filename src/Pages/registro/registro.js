@@ -1,13 +1,11 @@
-import coracaoUrl from "../../img/logo-coracao.png";
-import bemSocialUrl from "../../img/logo-bem-social.png";
-import { registrarUsuario } from "../../firebase/firebase";
+import coracaoUrl from '../../img/logo-coracao.png';
+import bemSocialUrl from '../../img/logo-bem-social.png';
+import { registrarUsuario } from '../../firebase/firebase';
 
 export default () => {
   const containerRegistro = document.createElement('div');
 
-
   const templateRegistro = `
-
   <main>
     <div class= "formulario-registro"> 
       <div class="logo-imagem">
@@ -38,11 +36,6 @@ export default () => {
     const inputSenha = containerRegistro.querySelector('#input-senha');
 
     registrarUsuario(inputEmail.value, inputSenha.value);
-
-
   });
-
-  return containerRegistro
-
+  return containerRegistro;
 };
-
