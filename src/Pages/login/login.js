@@ -41,6 +41,7 @@ export default () => {
   const botaoRegistrar = containerLogin.querySelector('#botao-registrar');
   botaoRegistrar.addEventListener('click', () => {
     console.log('chamei botão');
+    window.location.hash='registro' 
   });
 
     return containerLogin

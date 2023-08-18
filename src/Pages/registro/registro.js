@@ -1,5 +1,6 @@
 import coracaoUrl from "../../img/logo-coracao.png";
 import bemSocialUrl from "../../img/logo-bem-social.png";
+import { registrarUsuario } from "../../firebase/firebase";
 
 export default () => {
     const containerRegistro = document.createElement('div');
@@ -37,6 +38,7 @@ export default () => {
         //obter e-mail e senha dos inputs
         console.log(inputEmail.value)
         //chamar uma função com os parâmetros e-mail e senha
+        registrarUsuario(inputNome.value, inputEmail.value);
     });
 
     return containerRegistro
