@@ -28,11 +28,11 @@ export default () => {
 
   botaoRegistrar.addEventListener('click', () => {
     console.log('chamei botão');
-    //obter referencia aos inputs
+    // obter referencia aos inputs
     const inputEmail = containerRegistro.querySelector('#input-email');
-    //obter e-mail e senha dos inputs
+    // obter e-mail e senha dos inputs
     console.log(inputEmail.value)
-    //chamar uma função com os parâmetros e-mail e senha
+    // chamar uma função com os parâmetros e-mail e senha
     const inputSenha = containerRegistro.querySelector('#input-senha');
 
     registrarUsuario(inputEmail.value, inputSenha.value);

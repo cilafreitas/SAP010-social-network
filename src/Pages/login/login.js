@@ -1,5 +1,6 @@
 import coracaoUrl from '../../img/logo-coracao.png';
 import bemSocialUrl from '../../img/logo-bem-social.png';
+import { realizarLogin } from '../../firebase/firebase';
 
 export default () => {
   const containerLogin = document.createElement('div');
@@ -26,17 +27,17 @@ export default () => {
   const botaoEntrar = containerLogin.querySelector('#botao-entrar');
   botaoEntrar.addEventListener('click', () => {
     console.log('chamei botão');
-    //obter referencia aos inputs
+    // obter referencia aos inputs
     const inputEmail = containerLogin.querySelector('#input-email');
     console.log(inputEmail.value);
-    //criar input senha
+    // criar input senha
     const inputSenha = containerLogin.querySelector('#input-senha');
     console.log(inputSenha.value);
-    //chamar uma função do firebase com os parâmetros e-mail e senha
-
+    // chamar uma função do firebase com os parâmetros e-mail e senha
+    realizarLogin(inputEmail.value, inputSenha.value);
   });
   // criar um evento para redirecionar para a página de registro
-  //botaoRegistrar 
+  // botaoRegistrar
   const botaoRegistrar = containerLogin.querySelector('#botao-registrar');
   botaoRegistrar.addEventListener('click', () => {
     console.log('chamei botão');
