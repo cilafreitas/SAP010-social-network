@@ -1,11 +1,22 @@
+import 
 export default () => {
-    const container = document.createElement('div');
+    const containerFeed = document.createElement('div');
 
-    const template = `
-    <h1>testando</h1>
+    const templateFeed = `
+    <h1>Feed</h1>
+    <div>
+      <input id="postInput" type="text"  placeholder="Digite seu post">
+      <button id="postButton">Postar</button>
+    </div>
+    <div id="postList"></div>
     `;
-    container.innerHTML = template
+    containerFeed.innerHTML = templateFeed;
 
-    return container;
-}
+    return containerFeed;
+};
 
+// criar uma função para fazer o post 2 parametros
+// vizualizar os posts
+// conseguir postar e excluir o post
+const adicionarPost = () =>
+    const 
