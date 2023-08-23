@@ -37,3 +37,7 @@ export const realizarLogin = (email, password) => {
       console.log(error);
     });
 };
+
+// criar função adicionar post com parametro texto utilizando addDoc
+// firebase tem funções para adcionar dados: addDoc 
+// e para ler dados: getDocs/onSnapshot

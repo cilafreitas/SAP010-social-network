@@ -1,8 +1,9 @@
-import 
-export default () => {
-    const containerFeed = document.createElement('div');
+import card from "./card/card";
 
-    const templateFeed = `
+export default () => {
+  const containerFeed = document.createElement('div');
+
+  const templateFeed = `
     <h1>Feed</h1>
     <div>
       <input id="postInput" type="text"  placeholder="Digite seu post">
@@ -10,13 +11,23 @@ export default () => {
     </div>
     <div id="postList"></div>
     `;
-    containerFeed.innerHTML = templateFeed;
-
-    return containerFeed;
+  containerFeed.innerHTML = templateFeed;
+    // função mostrar postagens com lista de postagens como parametro
+  const postList = containerFeed.querySelector('#postList')
+  const postButton = containerFeed.querySelector('#postButton');
+  postButton.addEventListener('click', () => {
+    // chamar função adcionar post
+    console.log('testando');
+    postList.innerHTML = card();
+    // usar appendchild
+  });
+  return containerFeed;
 };
 
 // criar uma função para fazer o post 2 parametros
 // vizualizar os posts
 // conseguir postar e excluir o post
-const adicionarPost = () =>
-    const 
+// iniciar o cloud firestone
+
+
+// const adicionarPost = () =>
