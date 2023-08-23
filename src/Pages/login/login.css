@@ -38,3 +38,8 @@ body {
   right: 0px;
   padding: 5px;
 }
+
+@media (max-width: 768px) {
+  .formulario-login {
+    padding: 15% 5%; /* Ajustando o espaçamento para telas ainda menores */
+  }

@@ -1,3 +1,4 @@
+import { salvarPost } from "../../firebase/firebase";
 import card from "./card/card";
 
 export default () => {
@@ -12,22 +13,31 @@ export default () => {
     <div id="postList"></div>
     `;
   containerFeed.innerHTML = templateFeed;
-    // função mostrar postagens com lista de postagens como parametro
-  const postList = containerFeed.querySelector('#postList')
+
+  // função mostrar postagens com lista de postagens como parametro
+  // usar appendchild
+  const printarPost = (postList) => {
+    // const novoCard = card();
+    // postList.appendchild = card();
+    console.log('adicionarPost ok', postList);
+  };
+
+  const postList = containerFeed.querySelector('#postList');
   const postButton = containerFeed.querySelector('#postButton');
+
+  // ouvinte de evento para o botão postar
   postButton.addEventListener('click', () => {
     // chamar função adcionar post
+    salvarPost();
+    printarPost(postList);
     console.log('testando');
-    postList.innerHTML = card();
-    // usar appendchild
   });
   return containerFeed;
 };
 
 // criar uma função para fazer o post 2 parametros
+// iniciar o cloud firestone
 // vizualizar os posts
 // conseguir postar e excluir o post
-// iniciar o cloud firestone
-
 
 // const adicionarPost = () =>

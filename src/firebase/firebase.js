@@ -1,7 +1,7 @@
 // TODO: Add SDKs for Firebase products that you want to use
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './config.firebase';
-
+import { auth, db } from './config.firebase';
+import { collection, addDoc } from "firebase/firestore"; 
 // const email = 'teste@gmail.com';
 // const password = '123456';
 export const registrarUsuario = (email, password) => {
@@ -36,6 +36,15 @@ export const realizarLogin = (email, password) => {
       const errorMessage = error.message;
       console.log(error);
     });
+};
+
+export const salvarPost = async (message) => {
+  const docRef = await addDoc(collection(db, 'posts'), {
+    mensagem: message,
+    timestamp: new Date()
+  });
+  console.log("Document written with ID: ", docRef.id);
+
 };
 
 // criar função adicionar post com parametro texto utilizando addDoc
