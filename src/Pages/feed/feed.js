@@ -1,4 +1,4 @@
-import { salvarPost } from "../../firebase/firebase";
+import { salvarPost } from '../../firebase/firebase';
 import card from "./card/card";
 
 export default () => {
@@ -12,32 +12,34 @@ export default () => {
     </div>
     <div id="postList"></div>
     `;
-  containerFeed.innerHTML = templateFeed;
 
-  // função mostrar postagens com lista de postagens como parametro
-  // usar appendchild
-  const printarPost = (postList) => {
-    // const novoCard = card();
-    // postList.appendchild = card();
-    console.log('adicionarPost ok', postList);
-  };
+  containerFeed.innerHTML = templateFeed;
 
   const postList = containerFeed.querySelector('#postList');
   const postButton = containerFeed.querySelector('#postButton');
 
+  // função mostrar postagens com lista de postagens como parametro
+  // usar appendchild
+  const printarPost = (message, timestamp) => {
+    const novoCard = card(message, timestamp);
+    postList.appendchild (novoCard);
+    // console.log('adicionarPost ok', postList);
+  };
+
   // ouvinte de evento para o botão postar
+  // chamar função adcionar post
   postButton.addEventListener('click', () => {
-    // chamar função adcionar post
-    salvarPost();
-    printarPost(postList);
-    console.log('testando');
+    const postInput = containerFeed.querySelector('#postInput');
+    salvarPost(postInput);
   });
   return containerFeed;
 };
 
-// criar uma função para fazer o post 2 parametros
-// iniciar o cloud firestone
+// criar uma função para fazer o post 2 parametros ok
+// iniciar o cloud firestone ok
 // vizualizar os posts
 // conseguir postar e excluir o post
+// Verificar a autenticação do usuário antes de permitir a..
+// ...exclusão de uma postagem. Exibir alerta em caso de erro.
 
 // const adicionarPost = () =>

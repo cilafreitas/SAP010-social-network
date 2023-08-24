@@ -1,7 +1,8 @@
 // TODO: Add SDKs for Firebase products that you want to use
+import { collection, addDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from './config.firebase';
-import { collection, addDoc } from "firebase/firestore"; 
+
 // const email = 'teste@gmail.com';
 // const password = '123456';
 export const registrarUsuario = (email, password) => {
@@ -13,9 +14,11 @@ export const registrarUsuario = (email, password) => {
       console.log('Email do usuário:', user.email);
     })
     .catch((error) => {
-      const errorCode = error.code;
+      // const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(error);
+      // console.log('Erro durante o registro:', errorMessage);
+
+      alert(`Erro durante o registro: ${errorMessage}`);
 
       window.location.href = '/login';
     });
@@ -32,21 +35,29 @@ export const realizarLogin = (email, password) => {
       console.log('Email do usuário:', user.email);
     })
     .catch((error) => {
-      const errorCode = error.code;
+      // const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(error);
+      // console.log('Erro durante o login:', errorMessage);
+
+      alert(`Erro durante o registro: ${errorMessage}`);
     });
 };
 
 export const salvarPost = async (message) => {
   const docRef = await addDoc(collection(db, 'posts'), {
     mensagem: message,
-    timestamp: new Date()
+    timestamp: new Date(),
   });
-  console.log("Document written with ID: ", docRef.id);
-
+  console.log('Document written with ID: ', docRef.id);
 };
 
+
+
 // criar função adicionar post com parametro texto utilizando addDoc
-// firebase tem funções para adcionar dados: addDoc 
+// firebase tem funções para adcionar dados: addDoc
 // e para ler dados: getDocs/onSnapshot
+
+// função para excluir o post
+const excluirPostagem = () => {
+
+};
