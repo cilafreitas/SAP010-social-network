@@ -1,5 +1,5 @@
 // TODO: Add SDKs for Firebase products that you want to use
-import { collection, addDoc, getDocs, getDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from './config.firebase';
 
@@ -66,7 +66,7 @@ export const postsSalvos = async () => {
 // firebase tem funções para adcionar dados: addDoc
 // e para ler dados: getDocs/onSnapshot
 
-// função para excluir o post
-const excluirPostagem = () => {
+export const excluirPostagem = () => {
 
 };
+
