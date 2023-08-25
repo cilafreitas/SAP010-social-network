@@ -35,6 +35,7 @@ export default () => {
     console.log(inputSenha.value);
     // chamar uma função do firebase com os parâmetros e-mail e senha
     realizarLogin(inputEmail.value, inputSenha.value);
+    window.location.hash = 'feed';
   });
   // criar um evento para redirecionar para a página de registro
   // botaoRegistrar

@@ -1,5 +1,5 @@
 // TODO: Add SDKs for Firebase products that you want to use
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, getDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from './config.firebase';
 
@@ -51,7 +51,16 @@ export const salvarPost = async (message) => {
   console.log('Document written with ID: ', docRef.id);
 };
 
-
+export const postsSalvos = async () => {
+  const listaPosts = [];
+  const posts = collection(db, 'posts');
+  const postsSnapshot = await getDocs(posts);
+  postsSnapshot.forEach((doc) => {
+    console.log(doc.data());
+    listaPosts.push(doc.data());
+  });
+  return listaPosts;
+};
 
 // criar função adicionar post com parametro texto utilizando addDoc
 // firebase tem funções para adcionar dados: addDoc

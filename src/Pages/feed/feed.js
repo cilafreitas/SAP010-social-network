@@ -1,4 +1,4 @@
-import { salvarPost } from '../../firebase/firebase';
+import { salvarPost, postsSalvos } from '../../firebase/firebase';
 import card from "./card/card";
 
 export default () => {
@@ -9,6 +9,7 @@ export default () => {
     <div>
       <input id="postInput" type="text"  placeholder="Digite seu post">
       <button id="postButton">Postar</button>
+      <button id="sairButton">Sair</button>
     </div>
     <div id="postList"></div>
     `;
@@ -17,29 +18,46 @@ export default () => {
 
   const postList = containerFeed.querySelector('#postList');
   const postButton = containerFeed.querySelector('#postButton');
+  const sairButton = containerFeed.querySelector('#sairButton');
 
   // função mostrar postagens com lista de postagens como parametro
   // usar appendchild
-  const printarPost = (message, timestamp) => {
-    const novoCard = card(message, timestamp);
-    postList.appendchild (novoCard);
+  const printarPost = async () => {
+    postList.innerHTML = '';
+
+    const posts = await postsSalvos();
+    posts.forEach(post => {
+      console.log(post);
+      const novoCard = card(post.mensagem, post.timestamp);
+      postList.appendChild(novoCard);
+    });
     // console.log('adicionarPost ok', postList);
   };
-
+  printarPost();
   // ouvinte de evento para o botão postar
   // chamar função adcionar post
   postButton.addEventListener('click', () => {
     const postInput = containerFeed.querySelector('#postInput');
-    salvarPost(postInput);
+    console.log(postInput);
+    salvarPost(postInput.value);
+    printarPost();
   });
+
+  // criar uma função para fazer o post 2 parametros ok
+  // iniciar o cloud firestone ok
+  // vizualizar os posts
+  // conseguir postar e excluir o post
+  // Verificar a autenticação do usuário antes de permitir a..
+  // ...exclusão de uma postagem. Exibir alerta em caso de erro.
+
+  // const adicionarPost = () =>
+
+  // função para retornar a página de login com evento de clique
+  const retornarParaLogin = () => {
+    window.location.hash = 'login';
+  };
+
+  sairButton.addEventListener('click', retornarParaLogin);
+
   return containerFeed;
 };
-
-// criar uma função para fazer o post 2 parametros ok
-// iniciar o cloud firestone ok
-// vizualizar os posts
-// conseguir postar e excluir o post
-// Verificar a autenticação do usuário antes de permitir a..
-// ...exclusão de uma postagem. Exibir alerta em caso de erro.
-
-// const adicionarPost = () =>

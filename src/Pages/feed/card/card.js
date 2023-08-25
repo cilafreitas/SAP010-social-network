@@ -1,10 +1,11 @@
+// inserir parametro id
 export default (mensagem, timestamp) => {
   const containerCard = document.createElement('div');
 
   const templateCard = `
     <div class='card'>
      <p>${mensagem}</p>
-     <p>${timestamp}</p>
+     <p>${timestamp.toDate().toLocaleString('pt-BR')}</p>
      <button id='deletebutton' class='delete-button'>Excluir</button>
       
     </div>
