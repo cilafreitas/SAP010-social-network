@@ -1,5 +1,5 @@
 import { salvarPost, postsSalvos } from '../../firebase/firebase';
-import card from "./card/card";
+import card from './card/card';
 
 export default () => {
   const containerFeed = document.createElement('div');

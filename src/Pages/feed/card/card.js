@@ -7,16 +7,16 @@ export default (mensagem, timestamp, id) => {
     <div class='card'>
      <p>${mensagem}</p>
      <p>${timestamp.toDate().toLocaleString('pt-BR')}</p>
-     <button id='excluir-postagem' class='excluir-postagem'>Excluir</button>
+     <button id='excluir-postagem-${id}' class='excluir-postagem'>Excluir</button>
    </div>
   `;
 
   containerCard.innerHTML = templateCard;
 
   const deleteButton = containerCard.querySelector(`#excluir-postagem-${id}`);
-  deleteButton.addEventListener('click', async () => {
+  deleteButton.addEventListener('click', async (event) => {
     await excluirPostagem(id);
-    printarPost();
+    event.target.closest('.card').remove();
   });
 
   return containerCard;
