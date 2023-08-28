@@ -26,13 +26,10 @@ export default () => {
 
   const botaoEntrar = containerLogin.querySelector('#botao-entrar');
   botaoEntrar.addEventListener('click', () => {
-    console.log('chamei botão');
     // obter referencia aos inputs
     const inputEmail = containerLogin.querySelector('#input-email');
-    console.log(inputEmail.value);
     // criar input senha
     const inputSenha = containerLogin.querySelector('#input-senha');
-    console.log(inputSenha.value);
     // chamar uma função do firebase com os parâmetros e-mail e senha
     realizarLogin(inputEmail.value, inputSenha.value);
     window.location.hash = 'feed';
@@ -41,8 +38,8 @@ export default () => {
   // botaoRegistrar
   const botaoRegistrar = containerLogin.querySelector('#botao-registrar');
   botaoRegistrar.addEventListener('click', () => {
-    console.log('chamei botão');
     window.location.hash = 'registro';
   });
+
   return containerLogin;
 };

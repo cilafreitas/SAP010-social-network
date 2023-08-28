@@ -1,25 +1,26 @@
-// TODO: Add SDKs for Firebase products that you want to use
-import { collection, addDoc, getDocs, doc, deleteDoc  } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, deleteDoc, getDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from './config.firebase';
 
-
 // const email = 'teste@gmail.com';
 // const password = '123456';
+
+const mensagemElement = document.createElement('div');
+mensagemElement.id = 'mensagem';
+document.body.appendChild(mensagemElement);
+
 export const registrarUsuario = (email, password) => {
-  console.log(email, password);
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log('Cadastro realizado com sucesso!');
+      mensagemElement.textContent = 'Cadastro realizado com sucesso';
       console.log('Email do usuário:', user.email);
     })
     .catch((error) => {
       // const errorCode = error.code;
       const errorMessage = error.message;
       // console.log('Erro durante o registro:', errorMessage);
-
-      alert(`Erro durante o registro: ${errorMessage}`);
+      mensagemElement.textContent = `Erro durante o registro: ${errorMessage}`;
 
       window.location.href = '/login';
     });
@@ -27,12 +28,11 @@ export const registrarUsuario = (email, password) => {
 
 // fazer função de login
 // chamar método do firebase signInWithEmailAndPassword
-
 export const realizarLogin = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log('Login realizado com sucesso!');
+      mensagemElement.textContent = 'Login realizado com sucesso!';
       console.log('Email do usuário:', user.email);
     })
     .catch((error) => {
@@ -44,10 +44,11 @@ export const realizarLogin = (email, password) => {
     });
 };
 
-export const salvarPost = async (message) => {
+export const salvarPost = async (message, id) => {
   const docRef = await addDoc(collection(db, 'posts'), {
     mensagem: message,
     timestamp: new Date(),
+    id,
   });
   console.log('Document written with ID: ', docRef.id);
 };
@@ -67,8 +68,20 @@ export const postsSalvos = async () => {
 // firebase tem funções para adcionar dados: addDoc
 // e para ler dados: getDocs/onSnapshot
 
-export const excluirPostagem = async (id) => {
-  console.log(id);
-  await deleteDoc(doc(db, 'posts', id));
-  
+export const excluirPostagem = async (postId, userId) => {
+  const postDoc = doc(db, 'posts', postId);
+  const postsSnapshot = await getDoc(postDoc);
+
+  if (postsSnapshot.exists()) {
+    const post = postsSnapshot.data();
+
+    if (post.userId === userId) {
+      await deleteDoc(postDoc);
+      mensagemElement.textContent = 'Postagem excluída com sucesso.';
+    } else {
+      mensagemElement.textContent = 'Você não tem permissão para excluir esta postagem.';
+    }
+  } else {
+    mensagemElement.textContent = 'A postagem não existe.';
+  }
 };
