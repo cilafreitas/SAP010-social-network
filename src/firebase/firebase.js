@@ -48,18 +48,21 @@ export const salvarPost = async (message, id) => {
   const docRef = await addDoc(collection(db, 'posts'), {
     mensagem: message,
     timestamp: new Date(),
-    id,
+    // userId: id,
   });
   console.log('Document written with ID: ', docRef.id);
 };
+
+// passar id como parametro na hora de chamar a função salvarPost
 
 export const postsSalvos = async () => {
   const listaPosts = [];
   const posts = collection(db, 'posts');
   const postsSnapshot = await getDocs(posts);
   postsSnapshot.forEach((doc) => {
-    console.log(doc.data());
-    listaPosts.push(doc.data());
+    const docData = doc.data();
+    docData.id = doc.id;
+    listaPosts.push(docData);
   });
   return listaPosts;
 };
@@ -71,11 +74,10 @@ export const postsSalvos = async () => {
 export const excluirPostagem = async (postId, userId) => {
   const postDoc = doc(db, 'posts', postId);
   const postsSnapshot = await getDoc(postDoc);
-
   if (postsSnapshot.exists()) {
     const post = postsSnapshot.data();
-
-    if (post.userId === userId) {
+    if (true) {
+    //if (post.userId === userId) 
       await deleteDoc(postDoc);
       mensagemElement.textContent = 'Postagem excluída com sucesso.';
     } else {
