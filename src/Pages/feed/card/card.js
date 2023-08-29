@@ -21,3 +21,5 @@ export default (mensagem, timestamp, postId, userId) => {
 
   return containerCard;
 };
+
+// login chamar a página do feed com userId

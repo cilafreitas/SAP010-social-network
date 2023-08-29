@@ -19,20 +19,33 @@ export default () => {
       <button id="botao-entrar" type="button">ENTRAR</button> 
       <button id="botao-registrar" type="button">REGISTRAR</button>
     </div>
+    <div id="mensagem" > 
+    </div>
   </main>
 `;
 
   containerLogin.innerHTML = templateLogin;
+  const mensagemElement = containerLogin.querySelector('#mensagem');
+  // obter referencia aos inputs
+  const inputEmail = containerLogin.querySelector('#input-email');
+  // criar input senha
+  const inputSenha = containerLogin.querySelector('#input-senha');
+  inputEmail.addEventListener('focus', () => {
+    mensagemElement.innerHTML = '';
+  });
 
+  inputSenha.addEventListener('focus', () => {
+    mensagemElement.innerHTML = '';
+  });
   const botaoEntrar = containerLogin.querySelector('#botao-entrar');
-  botaoEntrar.addEventListener('click', () => {
-    // obter referencia aos inputs
-    const inputEmail = containerLogin.querySelector('#input-email');
-    // criar input senha
-    const inputSenha = containerLogin.querySelector('#input-senha');
+  botaoEntrar.addEventListener('click', async () => {
     // chamar uma função do firebase com os parâmetros e-mail e senha
-    realizarLogin(inputEmail.value, inputSenha.value);
-    window.location.hash = 'feed';
+    const user = await realizarLogin(inputEmail.value, inputSenha.value);
+    if (typeof user === 'string') {
+      mensagemElement.innerHTML = 'E-mail ou senha incorretos.';
+    } else {
+      window.location.hash = `feed.html?userId=${user.uid}`;
+    }
   });
   // criar um evento para redirecionar para a página de registro
   // botaoRegistrar

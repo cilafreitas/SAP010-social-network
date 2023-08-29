@@ -8,6 +8,7 @@ import { auth, db } from './config.firebase';
 const mensagemElement = document.createElement('div');
 mensagemElement.id = 'mensagem';
 document.body.appendChild(mensagemElement);
+// mensagemElement.textContent = 'Login realizado com sucesso!';
 
 export const registrarUsuario = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
@@ -28,28 +29,16 @@ export const registrarUsuario = (email, password) => {
 
 // fazer função de login
 // chamar método do firebase signInWithEmailAndPassword
-export const realizarLogin = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      mensagemElement.textContent = 'Login realizado com sucesso!';
-      console.log('Email do usuário:', user.email);
-    })
-    .catch((error) => {
-      // const errorCode = error.code;
-      const errorMessage = error.message;
-      // console.log('Erro durante o login:', errorMessage);
+export const realizarLogin = (email, password) => signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => userCredential.user)
+  .catch((error) => error.message);
 
-      alert(`Erro durante o registro: ${errorMessage}`);
-    });
-};
-
-export const salvarPost = async (message, id) => {
+export const salvarPost = async (message, userId) => {
   const docRef = await addDoc(collection(db, 'posts'), {
     mensagem: message,
     timestamp: new Date(),
-    // userId: id,
-  });
+    userId 
+});
   console.log('Document written with ID: ', docRef.id);
 };
 
@@ -77,7 +66,7 @@ export const excluirPostagem = async (postId, userId) => {
   if (postsSnapshot.exists()) {
     const post = postsSnapshot.data();
     if (true) {
-    //if (post.userId === userId) 
+      //if (post.userId === userId) 
       await deleteDoc(postDoc);
       mensagemElement.textContent = 'Postagem excluída com sucesso.';
     } else {
