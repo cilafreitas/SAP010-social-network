@@ -2,7 +2,7 @@ import coracaoUrl from '../../img/logo-coracao.png';
 import bemSocialUrl from '../../img/logo-bem-social.png';
 import { realizarLogin } from '../../firebase/firebase';
 
-export default () => {
+export default (user) => {
   const containerLogin = document.createElement('div');
 
   const templateLogin = `
@@ -44,9 +44,12 @@ export default () => {
     if (typeof user === 'string') {
       mensagemElement.innerHTML = 'E-mail ou senha incorretos.';
     } else {
-      window.location.hash = `feed.html?userId=${user.uid}`;
+      const parametro = new URLSearchParams();
+      parametro.append('userId', user.uid);
+      window.location.hash = `feed?${parametro.toString()}`;
     }
   });
+  // local storage
   // criar um evento para redirecionar para a página de registro
   // botaoRegistrar
   const botaoRegistrar = containerLogin.querySelector('#botao-registrar');

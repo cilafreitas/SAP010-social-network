@@ -10,18 +10,20 @@ const init = () => {
     main.innerHTML = '';
 
     console.log(window.location.hash);
-    switch (window.location.hash) {
-      case '#login':
-        main.appendChild(login());
-        break;
-      case '#feed':
-        main.appendChild(feed());
-        break;
-      case '#registro':
-        main.appendChild(registro());
-        break;
-      default:
-        main.appendChild(login());
+
+    if (window.location.hash.includes('#feed')) {
+      main.appendChild(feed());
+    } else {
+      switch (window.location.hash) {
+        case '#login':
+          main.appendChild(login());
+          break;
+        case '#registro':
+          main.appendChild(registro());
+          break;
+        default:
+          main.appendChild(login());
+      }
     }
   });
 };

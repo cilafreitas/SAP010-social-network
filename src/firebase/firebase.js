@@ -33,12 +33,13 @@ export const realizarLogin = (email, password) => signInWithEmailAndPassword(aut
   .then((userCredential) => userCredential.user)
   .catch((error) => error.message);
 
-export const salvarPost = async (message, userId) => {
+export const salvarPost = async (message) => {
+  console.log(auth.currentUser);
   const docRef = await addDoc(collection(db, 'posts'), {
     mensagem: message,
     timestamp: new Date(),
-    userId 
-});
+    userId: auth.currentUser.uid,
+  });
   console.log('Document written with ID: ', docRef.id);
 };
 
@@ -66,7 +67,7 @@ export const excluirPostagem = async (postId, userId) => {
   if (postsSnapshot.exists()) {
     const post = postsSnapshot.data();
     if (true) {
-      //if (post.userId === userId) 
+      if (post.userId === userId);
       await deleteDoc(postDoc);
       mensagemElement.textContent = 'Postagem excluída com sucesso.';
     } else {

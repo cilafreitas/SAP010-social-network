@@ -19,6 +19,7 @@ export default () => {
   const postList = containerFeed.querySelector('#postList');
   const postButton = containerFeed.querySelector('#postButton');
   const sairButton = containerFeed.querySelector('#sairButton');
+  const parametro = new URLSearchParams(window.location.search);
 
   // função mostrar postagens com lista de postagens como parametro
   // usar appendchild
@@ -38,8 +39,7 @@ export default () => {
   // chamar função adcionar post
   postButton.addEventListener('click', () => {
     const postInput = containerFeed.querySelector('#postInput');
-    console.log(postInput);
-    salvarPost(postInput.value);
+    salvarPost(postInput.value, parametro.get('userId'));
     printarPost();
   });
 

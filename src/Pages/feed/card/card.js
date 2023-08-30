@@ -5,15 +5,15 @@ export default (mensagem, timestamp, postId, userId) => {
 
   const templateCard = `
     <div class='card'>
-     <p>${mensagem}</p>
-     <p>${timestamp.toDate().toLocaleString('pt-BR')}</p>
-     <button id='excluir-postagem-${postId}' class='excluir-postagem'>Excluir</button>
-   </div>
+      <p>${mensagem}</p>
+      <p>${timestamp.toDate().toLocaleString('pt-BR')}</p>
+      <button class='excluir-postagem'>Excluir</button>
+    </div>
   `;
 
   containerCard.innerHTML = templateCard;
 
-  const deleteButton = containerCard.querySelector(`#excluir-postagem-${postId}`);
+  const deleteButton = containerCard.querySelector('.excluir-postagem');
   deleteButton.addEventListener('click', async (event) => {
     await excluirPostagem(postId, userId);
     event.target.closest('.card').remove();
