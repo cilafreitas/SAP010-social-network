@@ -15,8 +15,10 @@ export default (mensagem, timestamp, postId, userId) => {
 
   const deleteButton = containerCard.querySelector('.excluir-postagem');
   deleteButton.addEventListener('click', async (event) => {
-    await excluirPostagem(postId, userId);
-    event.target.closest('.card').remove();
+    const result = await excluirPostagem(postId, userId);
+    if (result === true) {
+      event.target.closest('.card').remove();
+    }
   });
 
   return containerCard;

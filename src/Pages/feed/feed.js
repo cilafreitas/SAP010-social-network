@@ -27,8 +27,7 @@ export default () => {
     postList.innerHTML = '';
 
     const posts = await postsSalvos();
-    posts.forEach(post => {
-      console.log(post);
+    posts.forEach((post) => {
       const novoCard = card(post.mensagem, post.timestamp, post.id, printarPost);
       postList.appendChild(novoCard);
     });

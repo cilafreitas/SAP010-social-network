@@ -9,8 +9,6 @@ const init = () => {
   window.addEventListener('hashchange', () => {
     main.innerHTML = '';
 
-    console.log(window.location.hash);
-
     if (window.location.hash.includes('#feed')) {
       main.appendChild(feed());
     } else {

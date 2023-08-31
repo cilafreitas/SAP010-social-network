@@ -1,5 +1,9 @@
-import { collection, addDoc, getDocs, doc, deleteDoc, getDoc } from 'firebase/firestore';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  collection, addDoc, getDocs, doc, deleteDoc, getDoc,
+} from 'firebase/firestore';
+import {
+  createUserWithEmailAndPassword, signInWithEmailAndPassword,
+} from 'firebase/auth';
 import { auth, db } from './config.firebase';
 
 // const email = 'teste@gmail.com';
@@ -12,10 +16,14 @@ document.body.appendChild(mensagemElement);
 
 export const registrarUsuario = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
+    .then(() => {
       mensagemElement.textContent = 'Cadastro realizado com sucesso';
-      console.log('Email do usuário:', user.email);
+      const voltarParaLoginButton = document.createElement('button');
+      voltarParaLoginButton.textContent = 'Voltar para o Login';
+      voltarParaLoginButton.addEventListener('click', () => {
+        window.location.href = '/login'; // Redirecionar para a página de login
+      });
+      mensagemElement.appendChild(voltarParaLoginButton);
     })
     .catch((error) => {
       // const errorCode = error.code;
@@ -34,13 +42,11 @@ export const realizarLogin = (email, password) => signInWithEmailAndPassword(aut
   .catch((error) => error.message);
 
 export const salvarPost = async (message) => {
-  console.log(auth.currentUser);
-  const docRef = await addDoc(collection(db, 'posts'), {
+  await addDoc(collection(db, 'posts'), {
     mensagem: message,
     timestamp: new Date(),
     userId: auth.currentUser.uid,
   });
-  console.log('Document written with ID: ', docRef.id);
 };
 
 // passar id como parametro na hora de chamar a função salvarPost
@@ -49,6 +55,7 @@ export const postsSalvos = async () => {
   const listaPosts = [];
   const posts = collection(db, 'posts');
   const postsSnapshot = await getDocs(posts);
+  // eslint-disable-next-line no-shadow
   postsSnapshot.forEach((doc) => {
     const docData = doc.data();
     docData.id = doc.id;
@@ -61,19 +68,19 @@ export const postsSalvos = async () => {
 // firebase tem funções para adcionar dados: addDoc
 // e para ler dados: getDocs/onSnapshot
 
-export const excluirPostagem = async (postId, userId) => {
+// eslint-disable-next-line consistent-return
+export const excluirPostagem = async (postId) => {
+  const userId = auth.currentUser.uid;
   const postDoc = doc(db, 'posts', postId);
   const postsSnapshot = await getDoc(postDoc);
   if (postsSnapshot.exists()) {
     const post = postsSnapshot.data();
-    if (true) {
-      if (post.userId === userId);
+    if (post.userId === userId) {
       await deleteDoc(postDoc);
       mensagemElement.textContent = 'Postagem excluída com sucesso.';
-    } else {
-      mensagemElement.textContent = 'Você não tem permissão para excluir esta postagem.';
+      return (true);
     }
-  } else {
-    mensagemElement.textContent = 'A postagem não existe.';
+    mensagemElement.textContent = 'Você não tem permissão para excluir esta postagem.';
+    return (false);
   }
 };

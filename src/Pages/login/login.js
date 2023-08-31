@@ -2,7 +2,7 @@ import coracaoUrl from '../../img/logo-coracao.png';
 import bemSocialUrl from '../../img/logo-bem-social.png';
 import { realizarLogin } from '../../firebase/firebase';
 
-export default (user) => {
+export default () => {
   const containerLogin = document.createElement('div');
 
   const templateLogin = `
@@ -40,6 +40,7 @@ export default (user) => {
   const botaoEntrar = containerLogin.querySelector('#botao-entrar');
   botaoEntrar.addEventListener('click', async () => {
     // chamar uma função do firebase com os parâmetros e-mail e senha
+    // eslint-disable-next-line no-shadow
     const user = await realizarLogin(inputEmail.value, inputSenha.value);
     if (typeof user === 'string') {
       mensagemElement.innerHTML = 'E-mail ou senha incorretos.';
