@@ -78,9 +78,9 @@ export const excluirPostagem = async (postId) => {
     if (post.userId === userId) {
       await deleteDoc(postDoc);
       mensagemElement.textContent = 'Postagem excluída com sucesso.';
-      return (true);
+      return true;
     }
     mensagemElement.textContent = 'Você não tem permissão para excluir esta postagem.';
-    return (false);
+    return false;
   }
 };
