@@ -1,7 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
-import login from './pages/login/login.js';
-import feed from './pages/feed/feed.js';
-import registro from './pages/registro/registro.js';
+import login from './Pages/login/login.js';
+import feed from './Pages/feed/feed.js';
+import registro from './Pages/registro/registro.js';
 
 const main = document.querySelector('#root');
 
