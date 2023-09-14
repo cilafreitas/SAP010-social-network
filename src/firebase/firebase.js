@@ -21,7 +21,7 @@ export const registrarUsuario = (email, password) => {
       const voltarParaLoginButton = document.createElement('button');
       voltarParaLoginButton.textContent = 'Voltar para o Login';
       voltarParaLoginButton.addEventListener('click', () => {
-        window.location.href = '/login'; // Redirecionar para a página de login
+        window.location.hash = 'login'; // Redirecionar para a página de login
       });
       mensagemElement.appendChild(voltarParaLoginButton);
     })
